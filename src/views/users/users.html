@@ -1,0 +1,150 @@
+<div>
+  <!-- 面包屑 -->
+  <el-card>
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ name: 'index' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
+    </el-breadcrumb>
+  </el-card>
+
+  <!-- 搜索与新增 -->
+  <el-row id="search">
+    <el-col :span="6">
+      <el-input placeholder="请输入内容" v-model="query" class="input-with-select">
+        <el-button slot="append" @click="search" icon="el-icon-search"></el-button>
+      </el-input>
+    </el-col>
+    <el-col :span="6">
+      &nbsp;&nbsp;
+      <el-button @click="add" type="success" plain>新增</el-button>
+    </el-col>
+  </el-row>
+
+  <!-- 用户列表 -->
+  <!--
+    el-table: 会自动对绑定的(:data)数据源进行遍历
+    prop 属性：当前 table 数据中，哪个字段属性显示在这一列中
+    -->
+  <el-table  :data="dataList" v-loading="loading" border style="width: 100%">
+    <el-table-column type="index" width="50">
+    </el-table-column>
+    <el-table-column prop="username" label="姓名" width="150">
+    </el-table-column>
+    <el-table-column prop="email" label="邮箱" width="200">
+    </el-table-column>
+    <el-table-column prop="mobile" label="电话" width="200">
+    </el-table-column>
+    <el-table-column prop="mg_state" label="状态" width="120">
+      <!--
+      1.0 表中添加开关switch、按钮button的话，需要外层套上template标签
+      2.0 并且template标签还要添加属性slot-scope
+        slot-scope属性：用来给这个template设置数据源（没有这个属性，内容无法显示）
+        scope是一个对象
+          属性：
+            row：会得到绑定给当前行的数据对象
+      -->
+      <template slot-scope="scope">
+        <el-switch v-model="scope.row.mg_state" @change="switchChange(scope.row)" active-color="#67c23a" inactive-color="#ccc">
+        </el-switch>
+        {{ scope.row.mg_state }}
+      </template>
+    </el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <!-- scope就是绑定的数据源，scope.row是行数据对象 -->
+        <el-button type="primary" @click="edit(scope.row)" icon="el-icon-edit" size="mini" plain></el-button>
+        <el-button type="warning" @click="del(scope.row.id)" icon="el-icon-delete" size="mini" plain></el-button>
+        <el-button type="danger" @click="openRole(scope.row)" icon="el-icon-check" size="mini" plain></el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <br />
+
+  <!-- 分页控件 -->
+  <!--
+    el-pagination: 分页组件根元素
+      事件：
+        @size-change：页容量改变时触发
+        @current-change：页码改变时触发
+      属性：
+        current-page：当前第几页
+        page-sizes：页容量数组
+        page-size：当前选中的某个页容量
+        layout：分页控件的布局，设置包含哪里模块
+        total：分页控件的总数据条数
+  -->
+  <el-pagination
+    @size-change="pageSizeChange"
+    @current-change="pageNumChange"
+    :current-page="pagenum"
+    :page-sizes="pagesizes"
+    :page-size="pagesize"
+    :total="total"
+    layout="total, sizes, prev, pager, next, jumper" >
+  </el-pagination>
+
+  <!-- 新增用户面板（对话框） -->
+  <el-dialog title="新增用户" :visible.sync="addVisible">
+    <el-form :model="form" status-icon :rules="rules2" ref="addForm">
+      <el-form-item label="用户名" prop="username" :label-width="addLabelWidth">
+        <el-input v-model="form.username" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="密码" prop="password" :label-width="addLabelWidth">
+        <el-input type="password" v-model="form.password" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="邮箱" :label-width="addLabelWidth">
+        <el-input v-model="form.email" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="电话" :label-width="addLabelWidth">
+        <el-input v-model="form.mobile" autocomplete="off"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="addVisible = false">取 消</el-button>
+      <el-button type="primary" @click="addSubmit('addForm')">确 定</el-button>
+    </div>
+  </el-dialog>
+
+  <!-- 编辑用户面板（对话框） -->
+  <el-dialog title="编辑用户" :visible.sync="editVisible">
+    <el-form :model="form" status-icon :rules="rules3" ref="editForm">
+      <el-form-item disabled label="用户名" prop="username" :label-width="addLabelWidth">
+        <el-input v-model="form.username" autocomplete="off" disabled></el-input>
+      </el-form-item>
+      <el-form-item label="邮箱" :label-width="addLabelWidth">
+        <el-input v-model="form.email" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="电话" :label-width="addLabelWidth">
+        <el-input v-model="form.mobile" autocomplete="off"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="editVisible = false">取 消</el-button>
+      <el-button type="primary" @click="editSubmit('editForm')">确 定</el-button>
+    </div>
+  </el-dialog>
+
+  <!-- 角色分配面板（对话框） -->
+  <el-dialog title="分配角色" :visible.sync="roleVisible">
+    <el-form :model="currentUser">
+      <el-form-item label="当前用户" :label-width="rolelabelWiddth">
+        {{ currentUser.username }}
+      </el-form-item>
+      <el-form-item label="选择角色" :label-width="rolelabelWiddth">
+        <el-select v-model="currentUser.rid" placeholder="请选择">
+          <!-- value为-1时表示该用户没有分配角色，label显示为“请选择角色” -->
+          <el-option label="请选择角色" :value="-1">
+          </el-option>
+          <el-option v-for="item in rolesList" :key="item.id" :label="item.roleName" :value="item.id">
+          </el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="roleVisible = false">取 消</el-button>
+      <el-button type="primary" @click="setRole">确 定</el-button>
+    </div>
+  </el-dialog>
+
+</div>
