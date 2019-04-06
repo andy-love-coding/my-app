@@ -1526,6 +1526,11 @@ clone@^1.0.2:
   resolved "http://registry.npm.taobao.org/clone/download/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
+clone@^2.1.1:
+  version "2.1.2"
+  resolved "http://registry.npm.taobao.org/clone/download/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+  integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
+
 co@^4.6.0:
   version "4.6.0"
   resolved "http://registry.npm.taobao.org/co/download/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -2230,6 +2235,13 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+echarts@^4.2.1:
+  version "4.2.1"
+  resolved "http://registry.npm.taobao.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  integrity sha1-mo6jsDNU+G+CTZdiXDNM8Wll7wM=
+  dependencies:
+    zrender "4.0.7"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -2244,6 +2256,11 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@
   version "1.3.119"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.119.tgz#9a7770da667252aeb81f667853f67c2b26e00197"
   integrity sha1-mndw2mZyUq64H2Z4U/Z8KybgAZc=
+
+element-tree-grid@^0.1.3:
+  version "0.1.3"
+  resolved "http://registry.npm.taobao.org/element-tree-grid/download/element-tree-grid-0.1.3.tgz#5cae79ce738f3b4e87072538bac672a32f1b0c33"
+  integrity sha1-XK55znOPO06HByU4usZyoy8bDDM=
 
 element-ui@^2.6.3:
   version "2.6.3"
@@ -2629,6 +2646,11 @@ event-emitter@~0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
+eventemitter3@^2.0.3:
+  version "2.0.3"
+  resolved "http://registry.npm.taobao.org/eventemitter3/download/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
+  integrity sha1-teEHm1n7XhuidxwKmTvgYKWMmbo=
+
 eventemitter3@^3.0.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/eventemitter3/download/eventemitter3-3.1.0.tgz#090b4d6cdbd645ed10bf750d4b5407942d7ba163"
@@ -2731,7 +2753,7 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     assign-symbols "^1.0.0"
     is-extendable "^1.0.1"
 
-extend@^3.0.0:
+extend@^3.0.0, extend@^3.0.1, extend@^3.0.2:
   version "3.0.2"
   resolved "http://registry.npm.taobao.org/extend/download/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha1-+LETa0Bx+9jrFAr/hYsQGewpFfo=
@@ -2778,6 +2800,11 @@ fast-deep-equal@^2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/fast-deep-equal/download/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
   integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
+
+fast-diff@1.1.2:
+  version "1.1.2"
+  resolved "http://registry.npm.taobao.org/fast-diff/download/fast-diff-1.1.2.tgz#4b62c42b8e03de3f848460b639079920695d0154"
+  integrity sha1-S2LEK44D3j+EhGC2OQeZIGldAVQ=
 
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
@@ -4230,6 +4257,11 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@
   dependencies:
     minimist "0.0.8"
 
+moment@^2.24.0:
+  version "2.24.0"
+  resolved "http://registry.npm.taobao.org/moment/download/moment-2.24.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fmoment%2Fdownload%2Fmoment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha1-DQVdU/UFKqZTyfbraLtdEr9cK1s=
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -4692,6 +4724,11 @@ param-case@2.1.x:
   integrity sha1-35T9jPZTHs915r75oIWPvHK+Ikc=
   dependencies:
     no-case "^2.2.0"
+
+parchment@^1.1.4:
+  version "1.1.4"
+  resolved "http://registry.npm.taobao.org/parchment/download/parchment-1.1.4.tgz#aeded7ab938fe921d4c34bc339ce1168bc2ffde5"
+  integrity sha1-rt7Xq5OP6SHUw0vDOc4RaLwv/eU=
 
 parse-asn1@^5.0.0:
   version "5.1.4"
@@ -5352,6 +5389,27 @@ querystringify@^2.0.0:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/querystringify/download/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
   integrity sha1-YOWl/WSn+L+k0qsu1v30yFutFU4=
+
+quill-delta@^3.6.2:
+  version "3.6.3"
+  resolved "http://registry.npm.taobao.org/quill-delta/download/quill-delta-3.6.3.tgz#b19fd2b89412301c60e1ff213d8d860eac0f1032"
+  integrity sha1-sZ/SuJQSMBxg4f8hPY2GDqwPEDI=
+  dependencies:
+    deep-equal "^1.0.1"
+    extend "^3.0.2"
+    fast-diff "1.1.2"
+
+quill@^1.3.4:
+  version "1.3.6"
+  resolved "http://registry.npm.taobao.org/quill/download/quill-1.3.6.tgz#99f4de1fee85925a0d7d4163b6d8328f23317a4d"
+  integrity sha1-mfTeH+6FkloNfUFjttgyjyMxek0=
+  dependencies:
+    clone "^2.1.1"
+    deep-equal "^1.0.1"
+    eventemitter3 "^2.0.3"
+    extend "^3.0.1"
+    parchment "^1.1.4"
+    quill-delta "^3.6.2"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
@@ -6661,6 +6719,14 @@ vue-loader@^13.3.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
+vue-quill-editor@^3.0.6:
+  version "3.0.6"
+  resolved "http://registry.npm.taobao.org/vue-quill-editor/download/vue-quill-editor-3.0.6.tgz#1f85646211d68a31a80a72cb7f45bb2f119bc8fb"
+  integrity sha1-H4VkYhHWijGoCnLLf0W7LxGbyPs=
+  dependencies:
+    object-assign "^4.1.1"
+    quill "^1.3.4"
+
 vue-router@^3.0.1:
   version "3.0.2"
   resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.2.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-3.0.2.tgz#dedc67afe6c4e2bc25682c8b1c2a8c0d7c7e56be"
@@ -6998,3 +7064,8 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+zrender@4.0.7:
+  version "4.0.7"
+  resolved "http://registry.npm.taobao.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  integrity sha1-Fa6WCCL17+1BCZXTflEH/j3hDm0=

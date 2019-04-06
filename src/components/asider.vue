@@ -6,81 +6,16 @@
       open/close: 是 Menu Methods
      -->
     <el-menu :router="menuOptions.router" :unique-opened="menuOptions.uniqueOpened">
-      <el-submenu class="position" index="1">
+      <el-submenu class="position" v-for="(item1, index) in menus" :key="item1.id" :index="index.toString()">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span>用户管理</span>
+          <span>{{ item1.authName }}</span>
         </template>
-        <el-menu-item index="/users">
+        <!-- 加'/',把inxex由相对路径，变成绝对路径 -->
+        <el-menu-item v-for="item2 in item1.children" :key="item2.id" :index="'/' + item2.path">
           <template>
             <i class="el-icon-menu"></i>
-            <span>用户列表</span>
-          </template>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu class="position" index="2">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>权限管理</span>
-        </template>
-        <el-menu-item index="/users">
-          <template>
-            <i class="el-icon-menu"></i>
-            <span>角色列表</span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="/users">
-          <template>
-            <i class="el-icon-menu"></i>
-            <span>权限列表</span>
-          </template>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu class="position" index="3">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>商品管理</span>
-        </template>
-        <el-menu-item index="/users">
-          <template>
-            <i class="el-icon-menu"></i>
-            <span>商品列表</span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="/users">
-          <template>
-            <i class="el-icon-menu"></i>
-            <span>分类参数</span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="/users">
-          <template>
-            <i class="el-icon-menu"></i>
-            <span>商品分类</span>
-          </template>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu class="position" index="4">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>订单管理</span>
-        </template>
-        <el-menu-item index="/users">
-          <template>
-            <i class="el-icon-menu"></i>
-            <span>订单列表</span>
-          </template>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu class="position" index="5">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>数据统计</span>
-        </template>
-        <el-menu-item index="/users">
-          <template>
-            <i class="el-icon-menu"></i>
-            <span>数据报表</span>
+            <span>{{ item2.authName }}</span>
           </template>
         </el-menu-item>
       </el-submenu>
@@ -95,7 +30,26 @@ export default {
       menuOptions: {
         router: true,
         uniqueOpened: true
-      }
+      },
+      menus: []
+    }
+  },
+  created () {
+    this.getMenus()
+  },
+  methods: {
+    getMenus () {
+      this.$http({
+        url: 'menus',
+        method: 'get'
+      }).then(res => {
+        var { data, meta } = res.data
+        if (meta.status === 200) {
+          this.menus = data
+        } else {
+          this.$message.error(meta.msg)
+        }
+      })
     }
   }
 }

@@ -24,13 +24,13 @@ import Asider from '@/components/asider.vue'
 export default {
 	// 登录判断方法1：用生命周期钩子函数(只要是进入home路由，也就是根目录'/'，就需要登录判断，包括home的子路由,其实就是所有路由了)
 	// 登录判断方法2：在src/router/index.js 中用导航守卫（或路由守卫）实现登录判断功能
-	beforeCreate () {
-		var token = window.localStorage.getItem('token')
-		if (!token) {
-			this.$message.error('对不起，您还没有登录！')
-			this.$router.push({ name: 'login' })
-		}
-	},
+	// beforeCreate () {
+	// 	var token = window.localStorage.getItem('token')
+	// 	if (!token) {
+	// 		this.$message.error('对不起，您还没有登录！')
+	// 		this.$router.push({ name: 'login' })
+	// 	}
+	// },
 	// 注册组件
 	components: {
 		Header,
