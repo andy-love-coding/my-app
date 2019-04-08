@@ -24,6 +24,14 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  externals: {
+    // '第三方包名'： '第三方包中导出对象的名称'
+    // 这两个名称都是固定的，第一个是node_modules的名称，第二个名称在第三方包js文件中查看（即导出的对象名称）
+    vue: 'Vue',
+    'element-ui': 'ELEMENT',
+    'moment': 'moment',
+    'axios': 'axios'
+  },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

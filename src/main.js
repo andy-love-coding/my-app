@@ -4,14 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// 引入 elementUI 对象
-import Element from 'element-ui'
 // 引入 elementUI 样式
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css' // import css注释掉，缩减app(css)体积，因为在index.html中已经用cdn加载过这个css样式了
 // 引入公共样式
 import '@/assets/css/index.css'
+
+// import 插件对象，这些不能注释，这代表的是从cdn下载后的包中，导入插件到项目中
+// 引入 elementUI 对象
+import Element from 'element-ui'
 // 引入封装的 axios 插件
-import axios from '@/assets/js/myaxios'
+import axios from '@/assets/js/myaxios.js'
 // 引入全局面包屑组件
 import MybreadCrumb from '@/components/breadcrumb.vue'
 // 引入moment

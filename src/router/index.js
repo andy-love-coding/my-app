@@ -1,17 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/login/login.vue'
-import Home from '@/views/home.vue'
-import Index from '@/views/index.vue'
-import Users from '@/views/users/users.vue'
-import Rights from '@/views/rights/rights.vue'
-import Roles from '@/views/rights/roles.vue'
-import Categories from '@/views/goods/categories.vue'
-import Goods from '@/views/goods/goods.vue'
-import GoodsAdd from '@/views/goods/goodsAdd.vue'
-import Params from '@/views/goods/params'
-import Orders from '@/views/orders/orders'
-import Reports from '@/views/reports/reports.vue'
+
+// 常规路由加载
+// import Login from '@/views/login/login.vue'
+// import Home from '@/views/home.vue'
+// import Index from '@/views/index.vue'
+// import Users from '@/views/users/users.vue'
+// import Rights from '@/views/rights/rights.vue'
+// import Roles from '@/views/rights/roles.vue'
+// import Categories from '@/views/goods/categories.vue'
+// import Goods from '@/views/goods/goods.vue'
+// import GoodsAdd from '@/views/goods/goodsAdd.vue'
+// import Params from '@/views/goods/params'
+// import Orders from '@/views/orders/orders'
+// import Reports from '@/views/reports/reports.vue'
+
+// 首屏优化：路由懒加载
+const Login = () => import('@/views/login/login.vue')
+const Home = () => import('@/views/home.vue')
+const Index = () => import('@/views/index.vue')
+const Users = () => import('@/views/users/users.vue')
+const Rights = () => import('@/views/rights/rights.vue')
+const Roles = () => import('@/views/rights/roles.vue')
+const Categories = () => import('@/views/goods/categories.vue')
+const Goods = () => import('@/views/goods/goods.vue')
+const GoodsAdd = () => import('@/views/goods/goodsAdd.vue')
+const Params = () => import('@/views/goods/params')
+const Orders = () => import('@/views/orders/orders')
+const Reports = () => import('@/views/reports/reports.vue')
 
 Vue.use(Router)
 
