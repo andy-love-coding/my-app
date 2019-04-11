@@ -10,8 +10,8 @@ import router from './router'
 import '@/assets/css/index.css'
 
 // import 插件对象，这些不能注释，这代表的是从cdn下载后的包中，导入插件到项目中
-// 引入 elementUI 对象
-import Element from 'element-ui'
+// 引入 elementUI 对象(但是：当vue是从cdn和element都是cdn引入的话，element可以不用import引入和Vue.use注册，因为element是基于vue封装的)
+// import Element from 'element-ui'
 // 引入封装的 axios 插件
 import axios from '@/assets/js/myaxios.js'
 // 引入全局面包屑组件
@@ -22,7 +22,7 @@ import moment from 'moment'
 // 注意，所有的 import 必须放在前面，import 语句之前不能有其他的代码
 
 // 全局注册 element ，将来任何位置都可以使用 element 组件
-Vue.use(Element)
+// Vue.use(Element)(但是：当vue是从cdn和element都是cdn引入的话，element可以不用import引入和Vue.use注册，因为element是基于vue封装的)
 // 全局注册 axios
 Vue.use(axios)
 // 注册全局面包屑组件，格式：Vue.component('组件名' , 组件)
